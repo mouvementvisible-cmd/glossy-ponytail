@@ -1,0 +1,340 @@
+/* ==========================================================
+   Glossy Ponytail — feuille de style
+   DA : ivoire & bleu nuit, doré en détails. Titres Cormorant Garamond, texte Jost.
+   ========================================================== */
+
+:root {
+  --ivoire: #FAF7F2;
+  --sable: #EDE4D6;
+  --sable-fonce: #E2D6C3;
+  --nuit: #0F1E4A;
+  --nuit-2: #1A2B5E;
+  --nuit-ligne: #3A4A7A;
+  --roi: #2A4BC9;
+  --dore: #B89252;          /* filets et détails sur fond clair */
+  --dore-clair: #D4B26A;    /* détails et liens sur fond sombre */
+  --dore-fonce: #8A6A2E;    /* petit texte doré sur fond clair */
+  --texte: #0F1E4A;
+  --texte-doux: #4A5168;
+  --texte-sur-nuit: #C9CEDC;
+  --ligne: #DDD3C3;
+  --ligne-douce: #ECE5D9;
+  --blanc: #FFFFFF;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+
+  --container: 1200px;
+  --gutter: 24px;
+  --radius: 18px;
+  --mobile-bar-h: 84px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ivoire);
+  color: var(--texte);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--nuit); }
+a:hover { color: var(--roi); }
+:focus-visible { outline: 2px solid var(--roi); outline-offset: 3px; }
+
+.container { max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--nuit); color: var(--ivoire); padding: 10px 16px; border-radius: 8px; z-index: 100;
+}
+.skip-link:focus { left: 8px; }
+
+/* ---------- Typo ---------- */
+h1, h2, h3 { margin: 0; }
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height: 1.05;
+}
+.section-title em, h1 em { font-style: italic; color: var(--roi); }
+.center { text-align: center; }
+
+.eyebrow {
+  margin: 0;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase;
+}
+.eyebrow-center { justify-content: center; }
+.eyebrow-line { display: inline-block; width: 36px; height: 1px; background: var(--dore); }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 16px 32px;
+  border-radius: 999px; border: 1px solid transparent;
+  font-family: var(--sans); font-weight: 600; font-size: 16px; text-decoration: none;
+  cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+}
+.btn-dark { background: var(--nuit); color: var(--ivoire); }
+.btn-dark:hover { background: var(--roi); color: var(--ivoire); }
+.btn-light { background: var(--ivoire); color: var(--nuit); }
+.btn-light:hover { background: var(--dore-clair); color: var(--nuit); }
+.btn-outline { background: transparent; color: var(--nuit); border-color: var(--nuit); }
+.btn-outline:hover { background: var(--nuit); color: var(--ivoire); }
+.btn-small { min-height: 44px; padding: 10px 22px; font-size: 15px; }
+.text-link { font-weight: 500; text-underline-offset: 6px; }
+
+/* ---------- Logo ---------- */
+.logo { display: inline-flex; align-items: baseline; gap: 8px; text-decoration: none; color: var(--nuit); }
+.logo:hover { color: var(--nuit); }
+.logo-glossy {
+  position: relative;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 30px; line-height: 1;
+}
+.logo-star { position: absolute; top: -3px; right: -11px; width: 10px; height: 10px; fill: var(--dore); }
+.logo-ponytail {
+  margin-left: 8px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; color: var(--dore-fonce);
+}
+.logo-light, .logo-light:hover { color: var(--ivoire); }
+.logo-light .logo-star { fill: var(--dore-clair); }
+.logo-light .logo-ponytail { color: var(--dore-clair); }
+
+/* ---------- En-tête ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 247, 242, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ligne);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+.main-nav { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
+.main-nav a:not(.btn) { text-decoration: none; }
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px; border: none; background: none; cursor: pointer;
+  align-items: center; justify-content: center;
+}
+.menu-toggle svg { width: 24px; height: 24px; fill: none; stroke: var(--nuit); stroke-width: 1.6; stroke-linecap: round; }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center;
+  padding-top: 72px; padding-bottom: 88px;
+}
+.hero-text { display: flex; flex-direction: column; gap: 28px; }
+.hero h1 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(44px, 6.4vw, 80px); line-height: 1;
+}
+.lead { margin: 0; font-size: 19px; color: var(--texte-doux); max-width: 520px; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.reassurance { margin: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 14px; color: var(--texte-doux); }
+.diamond { color: var(--dore); }
+.hero-visual { display: flex; justify-content: center; }
+
+/* ---------- Photos en arche ---------- */
+.arch { border-radius: 999px 999px 6px 6px; overflow: hidden; background: var(--sable); }
+.arch img { width: 100%; height: 100%; object-fit: cover; }
+.arch-hero { width: 100%; max-width: 440px; aspect-ratio: 440 / 580; border-radius: 220px 220px 6px 6px; }
+.arch-outline { outline: 1px solid var(--dore); outline-offset: 12px; }
+.placeholder {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 32px; color: #6B6F7E; font-size: 15px;
+}
+
+/* ---------- Étapes ---------- */
+.steps { background: var(--sable); padding: 72px 0; }
+.steps-list {
+  list-style: none; margin: 40px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;
+}
+.steps-list li { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.step-num { font-family: var(--serif); font-size: 48px; line-height: 1; color: var(--dore); }
+.steps-list h3 { font-size: 19px; font-weight: 600; }
+.steps-list p { margin: 0; color: var(--texte-doux); font-size: 16px; max-width: 280px; }
+
+/* ---------- Réservation ---------- */
+.booking { padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.section-head { display: flex; flex-direction: column; gap: 12px; }
+.booking-card {
+  width: 100%; max-width: 860px;
+  background: var(--blanc); border: 1px solid var(--ligne); border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 24px 60px -36px rgba(15, 30, 74, 0.35);
+}
+.booking-loading, .booking-noscript { margin: 0; padding: 32px 28px; color: var(--texte-doux); }
+.booking-iframe { display: block; width: 100%; min-height: 820px; border: 0; }
+.booking-list { padding: 8px 28px 20px; }
+.booking-list-head {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  margin: 0 -28px; padding: 18px 28px; border-bottom: 1px solid var(--ligne-douce); font-size: 14px;
+}
+.booking-list-head strong { font-weight: 600; }
+.booking-cat { padding-top: 20px; }
+.booking-cat h3 { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dore-fonce); }
+.booking-row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px;
+  padding: 16px 0; border-bottom: 1px solid var(--ligne-douce);
+}
+.booking-row:last-child { border-bottom: none; }
+.booking-row.is-highlighted { animation: highlight 1.8s ease-out; }
+@keyframes highlight {
+  0%, 30% { background: var(--sable); box-shadow: 0 0 0 12px var(--sable); }
+  100% { background: transparent; box-shadow: 0 0 0 12px transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .booking-row.is-highlighted { animation: none; background: var(--sable); } }
+.booking-row-info { display: flex; flex-direction: column; }
+.booking-row-name { font-weight: 500; font-size: 17px; }
+.booking-row-meta { font-size: 14px; color: var(--texte-doux); }
+.booking-row .btn { min-height: 44px; padding: 10px 22px; font-size: 14px; }
+.booking-footer {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  padding: 14px 28px; background: var(--ivoire); border-top: 1px solid var(--ligne-douce);
+  font-size: 12px; color: var(--texte-doux);
+}
+
+/* ---------- Galerie ---------- */
+.gallery { background: var(--nuit); color: var(--ivoire); padding: 96px 0; }
+.gallery .section-title { color: var(--ivoire); }
+.gallery-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 36px; }
+.gallery-sub { margin: 10px 0 0; color: var(--texte-sur-nuit); font-size: 17px; }
+.gallery-insta { color: var(--dore-clair); font-weight: 500; }
+.gallery-insta:hover { color: var(--ivoire); }
+.gallery-track {
+  display: flex; gap: 24px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 0;
+  padding-bottom: 12px;
+  scrollbar-width: thin; scrollbar-color: var(--nuit-ligne) transparent;
+}
+.gallery-card { flex: 0 0 280px; scroll-snap-align: start; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.gallery-photo { aspect-ratio: 3 / 4; border-radius: 140px 140px 6px 6px; background: var(--nuit-2); border: 1px solid var(--nuit-ligne); overflow: hidden; }
+.gallery-photo img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-photo.placeholder { color: var(--texte-sur-nuit); font-size: 14px; padding: 20px; }
+.gallery-card figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.gallery-name { font-family: var(--serif); font-style: italic; font-size: 24px; }
+.gallery-book { color: var(--dore-clair); font-size: 14px; font-weight: 600; white-space: nowrap; padding: 10px 0; }
+.gallery-book:hover { color: var(--ivoire); }
+.gallery-nav { display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px; }
+.gallery-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--nuit-ligne); background: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery-btn svg { width: 20px; height: 20px; fill: none; stroke: var(--ivoire); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.gallery-btn-next { border-color: var(--dore-clair); }
+.gallery-btn-next svg { stroke: var(--dore-clair); }
+.gallery-btn:hover { background: var(--nuit-2); }
+
+/* ---------- Avant ton RDV ---------- */
+.before { padding-top: 96px; padding-bottom: 96px; }
+.before-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.before-item { border-top: 1px solid var(--dore); padding-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+.before-item h3 { font-size: 17px; font-weight: 600; }
+.before-item p { margin: 0; color: var(--texte-doux); font-size: 16px; }
+
+/* ---------- Noëlla ---------- */
+.about { background: var(--sable); }
+.about-inner { max-width: 760px; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+.about-text { margin: 0; font-size: 18px; color: #3A4260; }
+
+/* ---------- Pied de page ---------- */
+.site-footer { background: var(--nuit); color: var(--ivoire); }
+.site-footer .container { padding-top: 72px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 48px; }
+.footer-cols { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+.footer-brand { flex: 1 1 280px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.footer-col { flex: 1 1 180px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--texte-sur-nuit); }
+.footer-col h2 { font-family: var(--sans); color: var(--dore-clair); font-weight: 600; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
+.footer-col p { margin: 0; }
+.footer-col a { color: var(--ivoire); }
+.footer-col a:hover { color: var(--dore-clair); }
+.footer-bottom {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  padding-top: 24px; border-top: 1px solid #2E3D6E; font-size: 13px; color: var(--texte-sur-nuit);
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.footer-links a { color: var(--texte-sur-nuit); }
+.footer-links a:hover { color: var(--ivoire); }
+
+/* ---------- Barre « Réserver » mobile ---------- */
+.mobile-bar { display: none; }
+
+/* ---------- Pages légales ---------- */
+.legal { max-width: 760px; padding-top: 64px; padding-bottom: 96px; }
+.legal h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5vw, 52px); line-height: 1.05; margin-bottom: 32px; }
+.legal h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 36px 0 10px; }
+.legal p, .legal li { color: #3A4260; }
+.legal-back { display: inline-block; margin-bottom: 24px; font-weight: 500; }
+
+/* ==========================================================
+   Tablette et mobile
+   ========================================================== */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 48px; padding-bottom: 64px; }
+  .before-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  :root { --gutter: 20px; }
+  body { font-size: 16px; padding-bottom: var(--mobile-bar-h); }
+
+  .menu-toggle { display: inline-flex; }
+  .main-nav {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--ivoire); border-bottom: 1px solid var(--ligne);
+    padding: 8px var(--gutter) 20px;
+  }
+  .main-nav.is-open { display: flex; }
+  .main-nav a:not(.btn) { padding: 14px 0; border-bottom: 1px solid var(--ligne-douce); }
+  .main-nav .btn { margin-top: 16px; }
+
+  .logo-glossy { font-size: 26px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.16em; gap: 10px; }
+  .eyebrow-line { width: 24px; }
+  .hero h1 { font-size: 44px; }
+  .lead { font-size: 16px; }
+  .hero-actions .btn { width: 100%; }
+  .arch-hero { max-width: 320px; }
+
+  .steps { padding: 56px 0; }
+  .steps-list { grid-template-columns: 1fr; gap: 28px; }
+
+  .booking { padding-top: 72px; padding-bottom: 72px; }
+  .booking-list { padding: 8px 20px 16px; }
+  .booking-list-head { margin: 0 -20px; padding: 16px 20px; }
+  .booking-footer { padding: 12px 20px; }
+
+  .gallery { padding: 72px 0; }
+  .gallery-track { margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); gap: 16px; }
+  .gallery-card { flex-basis: 76%; }
+  .gallery-card figcaption { flex-direction: column; gap: 2px; }
+  .gallery-book { padding: 8px 0; }
+  .gallery-nav { display: none; }
+
+  .before { padding-top: 72px; padding-bottom: 72px; }
+  .before-grid { grid-template-columns: 1fr; }
+  .about-inner { padding-top: 72px; padding-bottom: 72px; }
+
+  .mobile-bar {
+    display: flex; align-items: center; gap: 14px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background: var(--ivoire); border-top: 1px solid var(--ligne);
+    box-shadow: 0 -12px 30px -18px rgba(15, 30, 74, 0.35);
+  }
+  .mobile-bar-price { display: flex; flex-direction: column; font-size: 12px; color: var(--texte-doux); line-height: 1.2; }
+  .mobile-bar-price strong { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--nuit); }
+  .mobile-bar-btn { flex: 1; padding: 14px 16px; }
+}

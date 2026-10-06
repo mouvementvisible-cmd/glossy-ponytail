@@ -1,0 +1,43 @@
+{
+  "acuity": {
+    "_note": "À remplir une fois le compte Acuity configuré : l'adresse de la page de réservation (ex. https://glossyponytail.as.me) et, pour chaque prestation, son identifiant (appointmentType).",
+    "scheduleUrl": "",
+    "fallbackUrl": "https://www.iarabeauty.com/pro/glossypony_"
+  },
+  "categories": [
+    {
+      "nom": "Ponytails",
+      "prestations": [
+        { "id": "ponytail", "nom": "Ponytail", "duree": "2 h", "prix": "dès 65 €", "acuityId": null },
+        { "id": "half-pony", "nom": "Half pony", "duree": "2 h", "prix": "65 €", "acuityId": null },
+        { "id": "weeding-sleek", "nom": "Weeding sleek", "duree": "5 h", "prix": "dès 110 €", "acuityId": null }
+      ]
+    },
+    {
+      "nom": "Ponylace & wigs",
+      "prestations": [
+        { "id": "ponylace", "nom": "Ponylace", "duree": "2 h", "prix": "dès 70 €", "acuityId": null },
+        { "id": "wig-install", "nom": "Wig install", "duree": "2 h", "prix": "dès 60 €", "acuityId": null },
+        { "id": "wig-install-styling", "nom": "Wig install + styling", "duree": "2 h", "prix": "dès 75 €", "acuityId": null },
+        { "id": "wig-custom", "nom": "Wig custom", "duree": "30 min", "prix": "40 €", "acuityId": null }
+      ]
+    },
+    {
+      "nom": "Tissages & braids",
+      "prestations": [
+        { "id": "tissage-ouvert", "nom": "Tissage ouvert", "duree": "3 h", "prix": "65 €", "acuityId": null },
+        { "id": "tissage-lace", "nom": "Tissage + lace", "duree": "3 h", "prix": "dès 75 €", "acuityId": null },
+        { "id": "lagos-hairline", "nom": "Lagos hairline", "duree": "2 h", "prix": "dès 80 €", "acuityId": null },
+        { "id": "jayda-wayda-braids", "nom": "Jayda Wayda braids", "duree": "3 h", "prix": "dès 70 €", "acuityId": null }
+      ]
+    }
+  ],
+  "realisations": [
+    { "image": "", "alt": "Sleek ponytail haut et lisse", "prestation": "ponytail" },
+    { "image": "", "alt": "Ponylace avec finition naturelle", "prestation": "ponylace" },
+    { "image": "", "alt": "Perruque posée et coiffée", "prestation": "wig-install-styling" },
+    { "image": "", "alt": "Lagos hairline, avant et après", "prestation": "lagos-hairline" },
+    { "image": "", "alt": "Half pony", "prestation": "half-pony" },
+    { "image": "", "alt": "Tissage avec lace", "prestation": "tissage-lace" }
+  ]
+}
