@@ -36,6 +36,16 @@
           "aSavoir": []
         },
         {
+          "id": "ponybraid",
+          "nom": "Ponybraid",
+          "duree": "durée à confirmer",
+          "prix": "prix à confirmer",
+          "acuityId": null,
+          "comprend": [],
+          "aSavoir": [],
+          "_aConfirmer": "Nouvelle prestation : prix, durée, catégorie et contenu à faire préciser par Noëlla"
+        },
+        {
           "id": "weeding-sleek",
           "nom": "Weeding sleek",
           "duree": "5 h",
@@ -214,6 +224,11 @@
       "prestation": "weeding-sleek"
     },
     {
+      "image": "images/realisations/weeding-sleek-dore.webp",
+      "alt": "Coiffure de soirée : plaquage sleek avec ondulation sur le côté, tenue dorée",
+      "prestation": "weeding-sleek"
+    },
+    {
       "image": "images/realisations/wig-install-styling.webp",
       "alt": "Wig install + styling de profil : half-up avec chignon et baguette, mèches frange, longueurs lisses jusqu'au bas du dos",
       "prestation": "wig-install-styling"
@@ -259,13 +274,28 @@
       "prestation": "ponytail"
     },
     {
+      "image": "images/realisations/ponytail-mur-blanc.webp",
+      "alt": "Sleek ponytail haute de profil, baby hair dessinés, fond blanc",
+      "prestation": "ponytail"
+    },
+    {
+      "image": "images/realisations/ponytail-tresses.webp",
+      "alt": "Ponytail haute avec tresses plaquées sur le dessus, longueurs lisses",
+      "prestation": "ponytail"
+    },
+    {
+      "image": "images/realisations/ponybraid.webp",
+      "alt": "Ponybraid : queue de cheval haute tressée jusqu'au bas du dos",
+      "prestation": "ponybraid"
+    },
+    {
       "image": "images/realisations/layers.webp",
       "alt": "Layers : coupe dégradée, longueurs bouclées et volume autour du visage, raie sur le côté",
       "prestation": "layers"
     },
     {
       "image": "images/realisations/jayda-wayda-braids.webp",
-      "alt": "Jayda Wayda braids : deux tresses en zigzag sur le côté et cheveux lisses",
+      "alt": "Jayda Wayda braids : tresses plaquées en zigzag sur le côté, longueurs lisses",
       "prestation": "jayda-wayda-braids"
     },
     {

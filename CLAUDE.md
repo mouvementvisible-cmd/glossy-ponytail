@@ -91,7 +91,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 
 ## État du projet (au 10/10/2026)
 - Dépôt GitHub : **mouvementvisible-cmd/glossy-ponytail** (anciennement upflowcrea-create), relié à Netlify qui publie la branche `main`.
-- Photos : 13 réalisations dans `images/realisations/` (WebP 900×1200, recadrées) + photo d'accueil `images/hero.webp` (Ponylace au soleil). Ordre de la galerie validé, on garde toutes les variantes.
+- Photos : 17 réalisations dans `images/realisations/` (WebP 900×1200, recadrées) + photo d'accueil `images/hero.webp` (Ponylace au soleil). Ordre de la galerie validé, on garde toutes les variantes.
 - Règles photos : jamais Noëlla ni d'autres personnes en reflet dans les miroirs ; recadrer télé, produits, enseignes (ELANYA).
 - Descriptions des prestations reprises de la page iara (`comprend` / `aSavoir` dans `data/prestations.json`).
 - Questionnaire Tally de configuration Acuity : formulaire 2EMoaj (non publié).
@@ -101,6 +101,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 ## En suspens
 - [ ] **Au lancement : retirer la balise `<meta name="robots" content="noindex, nofollow">` de `index.html`** (ajoutée le 10/10/2026 pour que Google n'indexe pas le site tant qu'il n'est pas terminé). Au même moment, remplacer le domaine `[nom-de-domaine]` (canonical, og:url) et vérifier `robots.txt`.
 - Photo Tissage + lace : la cliente a indiqué qu'une photo de perruque suffit (même rendu, technique différente). On réutilise la photo Wig install (`wig-install.webp`), visible donc deux fois dans la galerie. Doublons Ponytail/Half pony : variantes gardées volontairement.
+- [ ] Prestation Ponybraid : prix, durée, catégorie et contenu à confirmer (ajoutée le 10/10/2026 dans la catégorie Ponytails)
 - [ ] Prestation « Layers » ajoutée (catégorie provisoire Ponylace & wigs) : prix, durée, catégorie et contenu à confirmer
 - [ ] « Weeding sleek » : confirmer s'il faut écrire « Wedding sleek » (prestation mariage à domicile)
 - [ ] Tissage ouvert : vérifier que la photo n'est pas plutôt un tissage + lace
