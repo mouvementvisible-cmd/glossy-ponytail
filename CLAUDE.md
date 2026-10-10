@@ -101,7 +101,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 
 ## En suspens
 - [ ] **Au lancement : retirer la balise `<meta name="robots" content="noindex, nofollow">` de `index.html`** (ajoutée le 10/10/2026 pour que Google n'indexe pas le site tant qu'il n'est pas terminé). Au même moment, remplacer le domaine `[nom-de-domaine]` (canonical, og:url) et vérifier `robots.txt`.
-- [ ] Photo Tissage + lace (Noëlla doit l'envoyer) ; la case affiche « Photo à venir » en attendant
+- Photo Tissage + lace : la cliente a indiqué qu'une photo de perruque suffit (même rendu, technique différente). On réutilise la photo Wig install (`wig-install.webp`), visible donc deux fois dans la galerie. Doublons Ponytail/Half pony : variantes gardées volontairement.
 - [ ] Prestation « Layers » ajoutée (catégorie provisoire Ponylace & wigs) : prix, durée, catégorie et contenu à confirmer
 - [ ] « Weeding sleek » : confirmer s'il faut écrire « Wedding sleek » (prestation mariage à domicile)
 - [ ] Tissage ouvert : vérifier que la photo n'est pas plutôt un tissage + lace
