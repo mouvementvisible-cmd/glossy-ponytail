@@ -8,36 +8,276 @@
     {
       "nom": "Ponytails",
       "prestations": [
-        { "id": "ponytail", "nom": "Ponytail", "duree": "2 h", "prix": "dès 65 €", "acuityId": null },
-        { "id": "half-pony", "nom": "Half pony", "duree": "2 h", "prix": "65 €", "acuityId": null },
-        { "id": "weeding-sleek", "nom": "Weeding sleek", "duree": "5 h", "prix": "dès 110 €", "acuityId": null }
+        {
+          "id": "ponytail",
+          "nom": "Ponytail",
+          "duree": "2 h",
+          "prix": "dès 65 €",
+          "acuityId": null,
+          "comprend": [
+            "Brushing + lissage des cheveux naturels",
+            "Plaquage sans cire ni gel",
+            "Tous les modèles (hors ponylace) au même prix"
+          ],
+          "aSavoir": []
+        },
+        {
+          "id": "half-pony",
+          "nom": "Half pony",
+          "duree": "2 h",
+          "prix": "65 €",
+          "acuityId": null,
+          "comprend": [
+            "Brushing + lissage des cheveux naturels",
+            "Plaquage sans cire ni gel",
+            "Tissage ou quick weave",
+            "Tous les modèles (hors ponylace et ponytail) au même prix"
+          ],
+          "aSavoir": []
+        },
+        {
+          "id": "weeding-sleek",
+          "nom": "Weeding sleek",
+          "duree": "5 h",
+          "prix": "dès 110 €",
+          "acuityId": null,
+          "comprend": [
+            "La prestation de ton choix, customisation le jour même incluse, avec ou sans tissage",
+            "Décoloration des nœuds",
+            "Customisation de la lace (standard / lagos hairline)",
+            "Le déplacement"
+          ],
+          "aSavoir": [
+            "Prestation à domicile. Déplacement : 93/94 +15 € ; 92/95/77/75 +30 € ; 78 +35 €. Devis selon la distance.",
+            "Me contacter pour créer des disponibilités."
+          ]
+        }
       ]
     },
     {
       "nom": "Ponylace & wigs",
       "prestations": [
-        { "id": "ponylace", "nom": "Ponylace", "duree": "2 h", "prix": "dès 70 €", "acuityId": null },
-        { "id": "wig-install", "nom": "Wig install", "duree": "2 h", "prix": "dès 60 €", "acuityId": null },
-        { "id": "wig-install-styling", "nom": "Wig install + styling", "duree": "2 h", "prix": "dès 75 €", "acuityId": null },
-        { "id": "wig-custom", "nom": "Wig custom", "duree": "30 min", "prix": "40 €", "acuityId": null }
+        {
+          "id": "ponylace",
+          "nom": "Ponylace",
+          "duree": "2 h",
+          "prix": "dès 70 €",
+          "acuityId": null,
+          "comprend": [
+            "Brushing + lissage des cheveux naturels",
+            "Décoloration des nœuds",
+            "Customisation de la lace (standard ; lagos hairline +5 €)",
+            "Installation de la lace"
+          ],
+          "aSavoir": [
+            "Perruque à déposer emballée, avec une étiquette prénom + téléphone, 3 jours avant le rendez-vous.",
+            "Customisation le jour même possible : +15 €. Retouches de la lace possibles le jour même pour l'adapter à ta hairline."
+          ]
+        },
+        {
+          "id": "wig-install",
+          "nom": "Wig install",
+          "duree": "2 h",
+          "prix": "dès 60 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Décoloration des nœuds",
+            "Customisation de la lace (standard)",
+            "Raie simple ou sur le côté (pour une coiffure, choisir Wig install + styling)",
+            "Soin de la mèche (lissage / soin des boucles)"
+          ],
+          "aSavoir": [
+            "Perruque à déposer emballée, avec une étiquette prénom + téléphone, 3 jours avant le rendez-vous.",
+            "Customisation le jour même possible : +15 €. Retouches de la lace possibles le jour même pour l'adapter à ta hairline."
+          ]
+        },
+        {
+          "id": "wig-install-styling",
+          "nom": "Wig install + styling",
+          "duree": "2 h",
+          "prix": "dès 75 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Décoloration des nœuds",
+            "Customisation de la lace (standard ; lagos hairline +5 €)",
+            "Coiffure sur la wig (tous les modèles acceptés)"
+          ],
+          "aSavoir": [
+            "Perruque à déposer emballée, avec une étiquette prénom + téléphone, 3 jours avant le rendez-vous.",
+            "Customisation le jour même possible : +15 €. Retouches de la lace possibles le jour même pour l'adapter à ta hairline."
+          ]
+        },
+        {
+          "id": "wig-custom",
+          "nom": "Wig custom",
+          "duree": "30 min",
+          "prix": "40 €",
+          "acuityId": null,
+          "comprend": [
+            "Customisation de la hairline de la wig",
+            "Décoloration des nœuds",
+            "Shampoing et soin de la wig"
+          ],
+          "aSavoir": [
+            "Wig à déposer 2 à 3 jours avant, avec un papier : nom, prénom, téléphone, Instagram."
+          ]
+        },
+        {
+          "id": "layers",
+          "nom": "Layers",
+          "duree": "durée à confirmer",
+          "prix": "prix à confirmer",
+          "acuityId": null,
+          "comprend": [],
+          "aSavoir": [],
+          "_aConfirmer": "Nouvelle prestation : catégorie, durée, prix et contenu à faire préciser par Noëlla"
+        }
       ]
     },
     {
       "nom": "Tissages & braids",
       "prestations": [
-        { "id": "tissage-ouvert", "nom": "Tissage ouvert", "duree": "3 h", "prix": "65 €", "acuityId": null },
-        { "id": "tissage-lace", "nom": "Tissage + lace", "duree": "3 h", "prix": "dès 75 €", "acuityId": null },
-        { "id": "lagos-hairline", "nom": "Lagos hairline", "duree": "2 h", "prix": "dès 80 €", "acuityId": null },
-        { "id": "jayda-wayda-braids", "nom": "Jayda Wayda braids", "duree": "3 h", "prix": "dès 70 €", "acuityId": null }
+        {
+          "id": "tissage-ouvert",
+          "nom": "Tissage ouvert",
+          "duree": "3 h",
+          "prix": "65 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Installation des mèches",
+            "Styling"
+          ],
+          "aSavoir": [
+            "Minimum 3 bundles."
+          ]
+        },
+        {
+          "id": "tissage-lace",
+          "nom": "Tissage + lace",
+          "duree": "3 h",
+          "prix": "dès 75 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Décoloration des nœuds",
+            "Customisation de la lace (standard ; lagos hairline +5 €)",
+            "Soin de la mèche (lissage / hydratation des boucles)"
+          ],
+          "aSavoir": [
+            "Perruque à déposer emballée, avec une étiquette prénom + téléphone, 3 jours avant le rendez-vous.",
+            "Customisation le jour même possible : +15 €. Retouches de la lace possibles le jour même pour l'adapter à ta hairline."
+          ]
+        },
+        {
+          "id": "lagos-hairline",
+          "nom": "Lagos hairline",
+          "duree": "2 h",
+          "prix": "dès 80 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Décoloration des nœuds",
+            "Customisation de la lace (lagos hairline / window peek)",
+            "Raie simple ou sur le côté (pour une coiffure, prendre l'option coiffure)",
+            "Soin de la mèche (lissage / soin des boucles)"
+          ],
+          "aSavoir": [
+            "Customisation réalisée le jour même, pour une lagos hairline adaptée à ton visage."
+          ]
+        },
+        {
+          "id": "jayda-wayda-braids",
+          "nom": "Jayda Wayda braids",
+          "duree": "3 h",
+          "prix": "dès 70 €",
+          "acuityId": null,
+          "comprend": [
+            "Tressage des cheveux naturels",
+            "Brushing des cheveux naturels",
+            "Tissage",
+            "Styling des mèches"
+          ],
+          "aSavoir": [
+            "Tous les modèles de Jayda Wayda braids sont acceptés."
+          ]
+        }
       ]
     }
   ],
   "realisations": [
-    { "image": "", "alt": "Sleek ponytail haut et lisse", "prestation": "ponytail" },
-    { "image": "", "alt": "Ponylace avec finition naturelle", "prestation": "ponylace" },
-    { "image": "", "alt": "Perruque posée et coiffée", "prestation": "wig-install-styling" },
-    { "image": "", "alt": "Lagos hairline, avant et après", "prestation": "lagos-hairline" },
-    { "image": "", "alt": "Half pony", "prestation": "half-pony" },
-    { "image": "", "alt": "Tissage avec lace", "prestation": "tissage-lace" }
-  ]
+    {
+      "image": "images/realisations/weeding-sleek.webp",
+      "alt": "Coiffure de mariée : plaquage sleek avec raie au milieu, boucles autour du visage, bijou de tête et voile",
+      "prestation": "weeding-sleek"
+    },
+    {
+      "image": "images/realisations/wig-install-styling.webp",
+      "alt": "Wig install + styling de profil : half-up avec chignon et baguette, mèches frange, longueurs lisses jusqu'au bas du dos",
+      "prestation": "wig-install-styling"
+    },
+    {
+      "image": "images/realisations/lagos-hairline.webp",
+      "alt": "Lagos hairline : lace fondue sur le front, raie au milieu, cheveux lisses",
+      "prestation": "lagos-hairline"
+    },
+    {
+      "image": "images/realisations/half-pony.webp",
+      "alt": "Half pony vu de dos : haut attaché, longueurs bouclées en grandes ondulations",
+      "prestation": "half-pony"
+    },
+    {
+      "image": "images/realisations/half-pony-chignon.webp",
+      "alt": "Half pony de profil : chignon haut, plaquage net et baby hair, longueurs lisses",
+      "prestation": "half-pony"
+    },
+    {
+      "image": "images/realisations/wig-install.webp",
+      "alt": "Wig install de profil : raie sur le côté, baby hair travaillés et lace invisible",
+      "prestation": "wig-install"
+    },
+    {
+      "image": "images/realisations/tissage-ouvert.webp",
+      "alt": "Tissage ouvert de profil : raie sur le côté, longueurs ondulées naturelles",
+      "prestation": "tissage-ouvert"
+    },
+    {
+      "image": "images/realisations/ponylace-frange.webp",
+      "alt": "Ponylace haute avec mèche frange sur le côté, plaquage brillant",
+      "prestation": "ponylace"
+    },
+    {
+      "image": "images/realisations/ponytail.webp",
+      "alt": "Sleek ponytail haute et lisse, plaquage sans gel, longueur jusqu'au bas du dos",
+      "prestation": "ponytail"
+    },
+    {
+      "image": "images/realisations/bun-ponytail.webp",
+      "alt": "Bun ponytail : chignon haut bouclé, plaquage lisse et mèches frange sur le côté",
+      "prestation": "ponytail"
+    },
+    {
+      "image": "images/realisations/layers.webp",
+      "alt": "Layers : coupe dégradée, longueurs bouclées et volume autour du visage, raie sur le côté",
+      "prestation": "layers"
+    },
+    {
+      "image": "images/realisations/jayda-wayda-braids.webp",
+      "alt": "Jayda Wayda braids : deux tresses en zigzag sur le côté et cheveux lisses",
+      "prestation": "jayda-wayda-braids"
+    },
+    {
+      "image": "images/realisations/wig-custom.webp",
+      "alt": "Wig custom : lace décolorée et hairline customisée, raie au milieu",
+      "prestation": "wig-custom"
+    },
+    {
+      "image": "",
+      "alt": "Tissage avec lace",
+      "prestation": "tissage-lace"
+    }
+  ],
+  "_sourceDescriptions": "Descriptions reprises de la page iara le 07/10/2026, à valider par Noëlla."
 }

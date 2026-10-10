@@ -88,3 +88,21 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - [ ] Infos pour les mentions légales (SIRET, statut)
 - [ ] Nom de domaine souhaité
 - [ ] Nouveau lien Instagram de la politique des prestations : la bio iara renvoie vers @glossyponytail_, compte qui n'existe plus
+
+## État du projet (au 10/10/2026)
+- Dépôt GitHub : **mouvementvisible-cmd/glossy-ponytail** (anciennement upflowcrea-create), relié à Netlify qui publie la branche `main`.
+- Photos : 13 réalisations dans `images/realisations/` (WebP 900×1200, recadrées) + photo d'accueil `images/hero.webp` (Ponylace au soleil). Ordre de la galerie validé, on garde toutes les variantes.
+- Règles photos : jamais Noëlla ni d'autres personnes en reflet dans les miroirs ; recadrer télé, produits, enseignes (ELANYA).
+- Descriptions des prestations reprises de la page iara (`comprend` / `aSavoir` dans `data/prestations.json`).
+- Questionnaire Tally de configuration Acuity : formulaire 2EMoaj (non publié).
+- Fiche de configuration Acuity : doc Claude ; brief portfolio AuPropre : doc Claude.
+
+## En suspens
+- [ ] Photo Tissage + lace (Noëlla doit l'envoyer) ; la case affiche « Photo à venir » en attendant
+- [ ] Prestation « Layers » ajoutée (catégorie provisoire Ponylace & wigs) : prix, durée, catégorie et contenu à confirmer
+- [ ] « Weeding sleek » : confirmer s'il faut écrire « Wedding sleek » (prestation mariage à domicile)
+- [ ] Tissage ouvert : vérifier que la photo n'est pas plutôt un tissage + lace
+- [ ] Lieu « ELANYA » (enseigne visible sur des photos) : confirmer que c'est le local de Noëlla
+- [ ] Accord des clientes visibles sur les photos (dont Bun ponytail : cliente qui paraît mineure → accord parental)
+- [ ] Paiement de l'acompte : Revolut seul (option préférée de la cliente, sans frais, vérification manuelle) ou Stripe via Acuity. Tant que ce n'est pas tranché, le site affiche encore « Acompte sécurisé · Apple Pay & carte » : à adapter
+- [ ] Questionnaire Tally : page « Paiement et compte » parle encore de Stripe ; question « Ton prénom et ton nom » disparue de la page 1 et page Photos revenue en position 8 (modifié hors session, à vérifier)
