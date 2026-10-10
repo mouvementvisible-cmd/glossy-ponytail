@@ -97,6 +97,8 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - Questionnaire Tally de configuration Acuity : formulaire 2EMoaj (non publié).
 - Fiche de configuration Acuity : doc Claude ; brief portfolio AuPropre : doc Claude.
 
+- Design du 10/10/2026 : hero centré, titre « Sleek ponytails, ponylace, wigs & tissages. » en une seule couleur (bleu nuit, sans italique), photo d'accueil `images/hero.webp` conservée en arche sous le titre. Photos de la galerie en carrés arrondis (24 px) au lieu des arches. Les autres titres gardent le mot en italique bleu roi. DA de base conservée (ivoire & bleu nuit) ; trois autres directions (noir & blanc, chocolat & rose, vert & lin) explorées en maquette et écartées. La photo « Bun ponytail » a été écartée pour le hero (accord de la cliente en attente, style moins représentatif).
+
 ## En suspens
 - [ ] **Au lancement : retirer la balise `<meta name="robots" content="noindex, nofollow">` de `index.html`** (ajoutée le 10/10/2026 pour que Google n'indexe pas le site tant qu'il n'est pas terminé). Au même moment, remplacer le domaine `[nom-de-domaine]` (canonical, og:url) et vérifier `robots.txt`.
 - [ ] Photo Tissage + lace (Noëlla doit l'envoyer) ; la case affiche « Photo à venir » en attendant
