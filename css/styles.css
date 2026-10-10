@@ -146,9 +146,7 @@ h1, h2, h3 { margin: 0; }
 
 /* ---------- Photos en arche ---------- */
 .arch { border-radius: 999px 999px 6px 6px; overflow: hidden; background: var(--sable); }
-.arch img { width: 100%; height: 100%; object-fit: cover; }
-.arch-hero img { object-position: 50% 30%; }
-.arch-hero { width: 100%; max-width: 440px; aspect-ratio: 440 / 580; border-radius: 220px 220px 6px 6px; }
+.arch img { width: 100%; height: 100%; object-fit: cover; }.arch-hero { width: 100%; max-width: 440px; aspect-ratio: 440 / 580; border-radius: 220px 220px 6px 6px; }
 .arch-outline { outline: 1px solid var(--dore); outline-offset: 12px; }
 .placeholder {
   display: flex; align-items: center; justify-content: center; text-align: center;
