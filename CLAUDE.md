@@ -97,7 +97,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - Questionnaire Tally de configuration Acuity : formulaire 2EMoaj (non publié).
 - Fiche de configuration Acuity : doc Claude ; brief portfolio AuPropre : doc Claude.
 
-- Design du 10/10/2026 : hero centré, titre « Sleek ponytails, ponylace, wigs & tissages. » en une seule couleur (bleu nuit, sans italique), photo d'accueil `images/hero.webp` conservée en arche sous le titre. Photos de la galerie en carrés arrondis (24 px) au lieu des arches. Les autres titres gardent le mot en italique bleu roi. DA de base conservée (ivoire & bleu nuit) ; trois autres directions (noir & blanc, chocolat & rose, vert & lin) explorées en maquette et écartées. La photo « Bun ponytail » a été écartée pour le hero (accord de la cliente en attente, style moins représentatif).
+- Design du 10/10/2026 : hero centré, titre « Sleek ponytails, ponylace, wigs & tissages. » en une seule couleur (bleu nuit, sans italique), photo d'accueil en arche sous le titre : `images/hero-bun.webp` (Bun ponytail, mise en ligne le 10/10/2026 à la demande du client, accord parental en attente, voir « En suspens »). L'ancienne photo `images/hero.webp` (Ponylace au soleil) est conservée dans le dépôt : pour revenir en arrière, remettre `images/hero.webp` dans `index.html`. Photos de la galerie en carrés arrondis (24 px) au lieu des arches. Les autres titres gardent le mot en italique bleu roi. DA de base conservée (ivoire & bleu nuit) ; trois autres directions (noir & blanc, chocolat & rose, vert & lin) explorées en maquette et écartées. Le client préfère la photo Bun ponytail pour le hero (comparée en maquette à la photo Ponylace au soleil).
 
 ## En suspens
 - [ ] **Au lancement : retirer la balise `<meta name="robots" content="noindex, nofollow">` de `index.html`** (ajoutée le 10/10/2026 pour que Google n'indexe pas le site tant qu'il n'est pas terminé). Au même moment, remplacer le domaine `[nom-de-domaine]` (canonical, og:url) et vérifier `robots.txt`.
@@ -106,6 +106,6 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - [ ] « Weeding sleek » : confirmer s'il faut écrire « Wedding sleek » (prestation mariage à domicile)
 - [ ] Tissage ouvert : vérifier que la photo n'est pas plutôt un tissage + lace
 - [ ] Lieu « ELANYA » (enseigne visible sur des photos) : confirmer que c'est le local de Noëlla
-- [ ] Accord des clientes visibles sur les photos (dont Bun ponytail : cliente qui paraît mineure → accord parental)
+- [ ] Accord des clientes visibles sur les photos (dont Bun ponytail : cliente qui paraît mineure → accord parental). **Bun ponytail est actuellement en photo d'accueil (hero) et dans la galerie** : si l'accord n'est pas obtenu, remettre `images/hero.webp` dans le hero et retirer la photo de la galerie (`data/prestations.json`)
 - [ ] Paiement de l'acompte : Revolut seul (option préférée de la cliente, sans frais, vérification manuelle) ou Stripe via Acuity. Tant que ce n'est pas tranché, le site affiche encore « Acompte sécurisé · Apple Pay & carte » : à adapter
 - [ ] Questionnaire Tally : page « Paiement et compte » parle encore de Stripe ; question « Ton prénom et ton nom » disparue de la page 1 et page Photos revenue en position 8 (modifié hors session, à vérifier)
