@@ -84,15 +84,16 @@
           "prix": "dès 110 €",
           "acuityId": 99314162,
           "surDemande": true,
+          "contact": "https://ig.me/m/glossypony_",
+          "contactRepli": "https://instagram.com/glossypony_",
+          "sousTitre": "Soirée & mariage · à domicile",
           "comprend": [
             "La prestation de ton choix, customisation le jour même incluse, avec ou sans tissage",
             "Décoloration des nœuds",
-            "Customisation de la lace (standard / lagos hairline)",
-            "Le déplacement"
+            "Customisation de la lace (standard / lagos hairline)"
           ],
           "aSavoir": [
-            "Prestation à domicile. Déplacement : 93/94 +15 € ; 92/95/77/75 +30 € ; 78 +35 €. Devis selon la distance.",
-            "Me contacter pour créer des disponibilités."
+            "Déplacement selon la zone : devis sur demande."
           ]
         }
       ]

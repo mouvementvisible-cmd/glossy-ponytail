@@ -200,8 +200,14 @@
 
       var book;
       if (prestation && prestation.surDemande) {
-        // Prestation privée dans Acuity (à domicile) : pas de réservation en ligne, on renvoie vers Instagram.
-        book = el('a', { className: 'gallery-book', href: data.instagram || 'https://www.instagram.com/glossypony_/', target: '_blank', rel: 'noopener', text: 'Sur demande · contacte-moi →', 'aria-label': 'Sur demande : contacte-moi sur Instagram pour ' + label + ' (s\'ouvre dans un nouvel onglet)' });
+        // Prestation privée dans Acuity (à domicile) : pas de réservation en ligne, on mène à la carte « Sur demande ».
+        book = el('a', { className: 'gallery-book', href: '#sur-demande', text: 'Faire une demande →', 'aria-label': 'Faire une demande : ' + label });
+        book.addEventListener('click', function (event) {
+          var target = document.getElementById('sur-demande');
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       } else {
         book = el('a', { className: 'gallery-book', href: '#reserver', text: 'Réserver ce style →', 'aria-label': 'Réserver ce style : ' + label });
         book.addEventListener('click', function (event) {
@@ -300,6 +306,51 @@
       pay
     ]);
     card.parentNode.insertBefore(box, card);
+  }
+
+  /* ---------- Prestations sur demande (carte sous le module) ---------- */
+  function renderSurDemande() {
+    var section = document.getElementById('reserver');
+    var card = section && section.querySelector('.booking-card');
+    if (!card) return;
+    var items = [];
+    data.categories.forEach(function (cat) {
+      cat.prestations.forEach(function (p) { if (p.surDemande) items.push(p); });
+    });
+    var anchor = card;
+    items.forEach(function (p, index) {
+      var photoItem = data.realisations.filter(function (r) { return r.prestation === p.id && r.image; })[0];
+      var contact = p.contact || p.contactRepli || 'https://www.instagram.com/glossypony_/';
+      var id = index === 0 ? 'sur-demande' : 'sur-demande-' + (index + 1);
+      var titleId = id + '-titre';
+
+      var list = function (lines, className) {
+        return el('ul', { className: className }, lines.map(function (line) {
+          return el('li', { text: line });
+        }));
+      };
+      var body = [
+        el('p', { className: 'ondemand-label', text: 'Sur demande' }),
+        el('h3', { id: titleId, className: 'ondemand-title', text: p.nom })
+      ];
+      if (p.sousTitre) body.push(el('p', { className: 'ondemand-sub', text: p.sousTitre }));
+      body.push(el('p', { className: 'ondemand-price', text: p.prix + ' · ' + p.duree }));
+      if (p.comprend && p.comprend.length) body.push(list(p.comprend, 'ondemand-list'));
+      if (p.aSavoir && p.aSavoir.length) body.push(list(p.aSavoir, 'ondemand-list ondemand-note'));
+      body.push(el('p', { className: 'ondemand-ask', text: 'Envoie-moi ta date, ta ville et le style voulu (une photo d\'inspiration, c\'est parfait) : je te réponds avec un devis.' }));
+      body.push(el('a', { className: 'btn btn-dark ondemand-btn', href: contact, target: '_blank', rel: 'noopener', text: 'Faire une demande sur Instagram', 'aria-label': 'Faire une demande sur Instagram pour ' + p.nom + ' (s\'ouvre dans un nouvel onglet)' }));
+
+      var children = [];
+      if (photoItem) {
+        children.push(el('div', { className: 'ondemand-photo arch' }, [
+          el('img', { src: photoItem.image, alt: photoItem.alt, loading: 'lazy', width: '560', height: '747' })
+        ]));
+      }
+      children.push(el('div', { className: 'ondemand-body' }, body));
+      var box = el('aside', { id: id, className: 'ondemand' + (photoItem ? ' has-photo' : ''), 'aria-labelledby': titleId }, children);
+      anchor.parentNode.insertBefore(box, anchor.nextSibling);
+      anchor = box;
+    });
   }
 
   /* ---------- Promotion (affichée seulement pendant sa période) ---------- */
@@ -433,6 +484,7 @@
     else renderList();
     renderGallery();
     renderAcompte();
+    renderSurDemande();
     renderPromo();
   }
 
