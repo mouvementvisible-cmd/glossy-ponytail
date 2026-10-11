@@ -249,6 +249,8 @@ h1, h2, h3 { margin: 0; }
 .know-list li { display: flex; flex-direction: column; gap: 4px; }
 .know-diamond { color: var(--dore); font-size: 13px; line-height: 1; }
 .know-list strong { display: block; font-size: 15px; font-weight: 600; }
+.know-pay { display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; margin-top: 8px; padding: 8px 18px; border: 1px solid var(--nuit); border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background-color .2s, color .2s; }
+.know-pay:hover { background: var(--nuit); color: var(--ivoire); }
 .know-list span:not(.know-diamond) { display: block; font-size: 14px; line-height: 1.5; color: var(--texte-doux); }
 
 /* ---------- Promotion (affichée par js/main.js pendant sa période) ---------- */

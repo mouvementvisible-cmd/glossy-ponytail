@@ -12,9 +12,9 @@
 
 ## Objectif du site
 Faire réserver, avec le parcours client le plus simple possible (consigne de la cliente : simple, moderne, premium, esthétique).
-- **Outil de réservation retenu : Acuity Scheduling**, formule Standard conseillée (acompte, rappels SMS, cartes cadeaux). Module Acuity intégré dans la page, pas de système de réservation maison.
+- **Outil de réservation retenu : Acuity Scheduling**, Module Acuity intégré dans la page, pas de système de réservation maison. **Le paiement de l'acompte ne passe pas par Acuity** : il se fait par le lien Revolut (voir « Paiement »). Rappels SMS et cartes cadeaux : non vérifiés / non proposés (la vente de cartes cadeaux demande un moyen de paiement intégré à Acuity).
 - En dessous de la formule Premium, le module garde le style Acuity (logo + couleur) : le site porte l'image premium, le module gère la résa.
-- Parcours visé : arrivée depuis Insta → prestation → créneau → acompte (Apple Pay / Google Pay / carte), sans création de compte. Bouton « Réserver » fixé en bas de l'écran sur mobile.
+- Parcours visé : arrivée depuis Insta → prestation → créneau → réservation sans compte → acompte de 20 € par lien Revolut juste après la réservation. Bouton « Réserver » fixé en bas de l'écran sur mobile.
 - Page iara actuelle : https://www.iarabeauty.com/pro/glossypony_ (à garder ou non pendant la transition)
 
 ## Prestations et tarifs (relevés sur iara le 06/10/2026)
@@ -35,11 +35,11 @@ Faire réserver, avec le parcours client le plus simple possible (consigne de la
 Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data/prestations.json`) pour les mettre à jour facilement.
 
 ## Politique de RDV
-- Acompte demandé à la réservation
+- Acompte de 20 € (montant relevé sur iara, à confirmer par Noëlla), à régler par Revolut juste après la réservation : https://revolut.me/isharon
 - Retards : 5 min offerts, +10 € à 15 min, +15 € à 20 min ; au-delà de 20 min, RDV annulé. Sans nouvelles dès 5 min de retard, RDV annulé.
 - Accompagnant non accepté, hommes non acceptés, accès handicapé (conditions de la page iara, relevées le 11/10/2026 ; corrigé à la demande du client, le brief disait l'inverse)
 - Annulation ou report possible jusqu'à 72 h avant le rendez-vous ; préavis minimum de réservation : 10 h ; réservation possible jusqu'à 40 jours à l'avance (réglé ainsi dans Acuity ; écrit dans le bandeau « À savoir »)
-- Cartes cadeaux disponibles (via iara)
+- Cartes cadeaux : disponibles sur iara seulement ; lien retiré du site le 11/10/2026 (pas de vente possible via Acuity sans paiement intégré)
 
 ## Avis
 - **Pas d'avis clients sur le site** (choix de la cliente) : ni note, ni témoignages, ni fiche Google à mettre en place pour le site.
@@ -64,7 +64,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 4. Tarifs & réservation = le module Acuity (liste des prestations par catégorie, avec prix)
 5. (supprimée le 11/10/2026) La section « Avant ton rendez-vous » est remplacée par un bandeau « À savoir avant de réserver » placé au-dessus du module Acuity (5 points, chacun écrit une seule fois : acompte, annulation et report, retards, perruque ou lace, adresse ; plus de « Tout lire ») ; lien du menu : `#savoir`
 6. À propos de Noëlla (titre : « Noëlla, coiffeuse autodidacte depuis 5 ans. », ton sobre), sans avis ni note
-7. Pied de page : infos pratiques, réseaux, mentions légales, cartes cadeaux
+7. Pied de page : infos pratiques, réseaux, mentions légales (le lien « Cartes cadeaux » est retiré)
 
 ## Contraintes techniques
 - HTML/CSS/JS statique, pas de framework lourd
@@ -98,6 +98,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - Questionnaire Tally de configuration Acuity : formulaire 2EMoaj (non publié).
 - Fiche de configuration Acuity : doc Claude ; brief portfolio AuPropre : doc Claude.
 - **Acuity configuré le 11/10/2026** (adresse de la page : `https://glossyponytai93.as.me/`, saisie dans `acuity.scheduleUrl`) : 10 prestations en 3 catégories (Ponytails, Ponylace & wigs, Tissages & braids), dont l'identifiant `appointmentType` est dans `acuityId` de `data/prestations.json` ; suppléments Lagos hairline +5 € et Customisation le jour même +15 € ; formulaire client (Instagram, accompagnée, précision, politique de retard obligatoire, case perruque obligatoire pour les 5 prestations avec perruque) ; téléphone obligatoire ; création de compte client et réservation de plusieurs créneaux désactivées. `weeding-sleek`, `ponybraid` et `layers` ont un `acuityId` à `null` (pas créées dans Acuity) : leurs liens « Réserver ce style » ouvrent la page de réservation générale.
+- **Paiement (décidé le 11/10/2026)** : tout passe par le lien Revolut `https://revolut.me/isharon`, hors Acuity (Stripe non connecté). Acompte de 20 € affiché une seule fois dans `index.html` (bandeau « À savoir », avec le bouton « Payer l'acompte »). Le reste du site ne cite que « Revolut » sans montant : mention sous les boutons du hero (« Réservation en ligne · Acompte par Revolut · Confirmation par e-mail »), pied du module (« Acompte à régler par Revolut après ta réservation »), mentions légales et politique de confidentialité (Revolut remplace [Stripe] ; « SMS de rappel » retiré tant que les SMS ne sont pas vérifiés). Pour changer le montant ou le lien : `index.html` (bandeau « À savoir »). Flux : la cliente réserve dans Acuity (créneau confirmé sans paiement), puis paie par Revolut ; Noëlla vérifie le paiement à la main.
 - **Promo Halloween (20/10 – 05/11/2026)** : bloc `promo` de `data/prestations.json` (titre « Spécial Halloween », accroche « Des prix à faire peur. », dates `2026-10-20` à `2026-11-05` inclus, fuseau Europe/Paris, toutes les prestations à 65 € hors prestation à domicile, customisation de la wig incluse, créneaux 13 h – 23 h du lundi au samedi, +10 € à partir de 20 h). Acuity : catégorie « Spécial Halloween », prestations 99308352 (65 €, 13 h – 20 h) et 99308367 (75 €, après 20 h) ; la cliente choisit sa prestation réelle dans une liste du formulaire Acuity ; créneaux réglés dans Acuity (20/10 – 05/11, hors dimanche). Affichage automatique par `js/main.js` (`renderPromo`), **dès le 11/10/2026** (`affichageDebut`, pour que les clientes réservent à l'avance : Acuity propose déjà des créneaux dès le mardi 20/10) jusqu'au 05/11 à 23 h 59 (Paris), « du 20 octobre au 5 novembre » restant écrit dans les textes : bandeau tout en haut, bloc « Spécial Halloween » juste avant « Tarifs & réservation », barre mobile « Halloween 65 € » vers le bloc ; hors période (avant `affichageDebut`, après `fin`), aucun élément dans la page. Deux boutons rechargent le module Acuity sur 99308352 / 99308367. Aperçu hors période : ajouter `?promo=apercu` à l'adresse (affiche tout, sans date). Lien Instagram conseillé pendant la promo : `…/#promo`. Orange citrouille `#B9531A` (fond clair) / `#F08A3C` (fond bleu nuit). Après le 05/11, la promo peut rester dans le JSON (elle disparaît seule) ou être retirée.
 - Galerie (11/10/2026) : option C retenue (toutes les photos gardées, noms de variantes, filtres par catégorie), galerie au-dessus du module de réservation ; photos uniquement dans le code du site (pas dans Acuity ; une photo par prestation dans Acuity seulement si le champ existe, facultatif).
 - Ordre de la page (11/10/2026, validé) : hero, réalisations, réservation (ligne d'étapes + bandeau « À savoir » + module), Noëlla, pied de page. Boutons du hero : « Prendre rendez-vous » et « Voir les réalisations ». Le menu et la barre mobile gardent « Réserver » / « Réserver mon rendez-vous ».
@@ -115,7 +116,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - [ ] Tissage ouvert : vérifier que la photo n'est pas plutôt un tissage + lace
 - [ ] Lieu « ELANYA » (enseigne visible sur des photos) : confirmer que c'est le local de Noëlla
 - [ ] Accord des clientes visibles sur les photos (dont Bun ponytail : cliente qui paraît mineure → accord parental). Bun ponytail est toujours dans la galerie : si l'accord n'est pas obtenu, retirer la photo de la galerie (`data/prestations.json`)
-- [ ] **Restent à faire dans Acuity** : paiement de l'acompte (Revolut ou Stripe, voir ci-dessous), disponibilités (horaires de Noëlla), une photo par prestation, création de Ponybraid / Layers / Weeding sleek (puis renseigner leur `acuityId`), nom de la page (« Glossy Ponytail BOOKING » à renommer « Glossy Ponytail »), logo et style de la page
+- [ ] **Restent à faire dans Acuity** : **dans l'e-mail de confirmation, ajouter le montant (20 €) et le lien Revolut**, ne pas connecter Stripe, disponibilités (horaires de Noëlla), une photo par prestation, création de Ponybraid / Layers / Weeding sleek (puis renseigner leur `acuityId`), nom de la page (« Glossy Ponytail BOOKING » à renommer « Glossy Ponytail »), logo et style de la page
 - [ ] **À étudier** : page d'administration (type Decap CMS) pour que Noëlla gère elle-même la galerie sans passer par `data/prestations.json`
-- [ ] Paiement de l'acompte : Revolut seul (option préférée de la cliente, sans frais, vérification manuelle) ou Stripe via Acuity. Tant que ce n'est pas tranché, le site affiche encore « Acompte sécurisé · Apple Pay & carte » : à adapter
+- [ ] Paiement par Revolut (voir « État du projet ») : confirmer le montant de 20 € avec Noëlla ; définir comment elle rapproche un paiement d'une réservation (nom du payeur et montant) et ce qui se passe si l'acompte n'arrive pas (délai, libération du créneau) : aucune règle n'est écrite sur le site ; vérifier ce que la page revolut.me demande à la cliente (montant libre, référence)
 - [ ] Questionnaire Tally : page « Paiement et compte » parle encore de Stripe ; question « Ton prénom et ton nom » disparue de la page 1 et page Photos revenue en position 8 (modifié hors session, à vérifier)
