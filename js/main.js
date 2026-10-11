@@ -70,7 +70,14 @@
       className: 'booking-iframe',
       loading: 'lazy'
     });
-    zone.replaceChildren(iframe);
+    var children = [iframe];
+    if (acuityId) {
+      // Un lien direct vers une prestation n'affiche pas de retour dans Acuity : on l'ajoute.
+      var back = el('button', { type: 'button', className: 'booking-back', text: '← Voir toutes les prestations' });
+      back.addEventListener('click', function () { renderAcuity(null); });
+      children.unshift(back);
+    }
+    zone.replaceChildren.apply(zone, children);
     document.getElementById('booking-provider').textContent = 'Réservation par Acuity Scheduling';
     loadAcuityScript();
   }
