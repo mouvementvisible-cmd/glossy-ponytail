@@ -137,12 +137,16 @@
     zone.replaceChildren(list);
   }
 
+  function openBookingById(acuityId) {
+    renderAcuity(acuityId);
+    scrollToBooking();
+    setTimeout(pulseBooking, 450);
+  }
+
   function openBooking(prestationId) {
     var prestation = prestationsById[prestationId];
     if (hasAcuity()) {
-      renderAcuity(prestation && prestation.acuityId);
-      scrollToBooking();
-      setTimeout(pulseBooking, 450);
+      openBookingById(prestation && prestation.acuityId);
       return;
     }
     // Pas encore d'Acuity : on fait défiler jusqu'à la ligne de la prestation.
@@ -270,6 +274,125 @@
     updateArrows();
   }
 
+  /* ---------- Promotion (affichée seulement pendant sa période) ---------- */
+  var PUMPKIN_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.5c-5 0-9 2.8-9 6.7S7 20 12 20s9-2.9 9-6.8-4-6.7-9-6.7z"/><path d="M12 6.5c-2.2 1.4-3.3 3.8-3.3 6.7s1.1 5.3 3.3 6.8M12 6.5c2.2 1.4 3.3 3.8 3.3 6.7s-1.1 5.3-3.3 6.8"/><path d="M12 6.5V4.2c0-1 .7-1.7 1.7-1.7"/></svg>';
+
+  function parisToday(zone) {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: zone || 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  }
+
+  function frenchDate(iso) {
+    var p = iso.split('-').map(Number);
+    return new Date(Date.UTC(p[0], p[1] - 1, p[2])).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+  }
+
+  function promoIsActive() {
+    var promo = data && data.promo;
+    if (!promo) return false;
+    if (new URLSearchParams(window.location.search).get('promo') === 'apercu') return true;
+    var today = parisToday(promo.fuseau);
+    return today >= promo.debut && today <= promo.fin;
+  }
+
+  function pumpkinIcon(className) {
+    var span = el('span', { className: className });
+    span.innerHTML = PUMPKIN_SVG; // constante définie ci-dessus, aucune donnée externe
+    return span;
+  }
+
+  function renderPromo() {
+    if (!promoIsActive()) return;
+    var promo = data.promo;
+    var dates = 'du ' + frenchDate(promo.debut) + ' au ' + frenchDate(promo.fin);
+
+    // Bandeau tout en haut de la page
+    var header = document.querySelector('.site-header');
+    if (header) {
+      var link = el('a', { className: 'promo-bar-link', href: '#promo', text: promo.bandeau.lien + ' →' });
+      var bar = el('aside', { className: 'promo-bar', 'aria-label': 'Offre en cours : ' + promo.titre }, [
+        el('div', { className: 'container promo-bar-inner' }, [
+          el('p', { className: 'promo-bar-main' }, [
+            pumpkinIcon('promo-icon'),
+            el('strong', { text: promo.titre }),
+            document.createTextNode(' · ' + promo.bandeau.texte)
+          ]),
+          el('p', { className: 'promo-bar-sub', text: dates }),
+          link
+        ])
+      ]);
+      header.parentNode.insertBefore(bar, header);
+    }
+
+    // Bloc promo, juste avant « Tarifs & réservation »
+    var target = document.getElementById('reserver');
+    if (!target) return;
+
+    var lines = el('ul', { className: 'promo-lines' });
+    promo.lignes.forEach(function (line) {
+      var li = el('li');
+      var idx = line.accent ? line.texte.indexOf(line.accent) : -1;
+      if (idx < 0) {
+        li.textContent = line.texte;
+      } else {
+        li.appendChild(document.createTextNode(line.texte.slice(0, idx)));
+        li.appendChild(el('strong', { className: 'promo-accent', text: line.accent }));
+        li.appendChild(document.createTextNode(line.texte.slice(idx + line.accent.length)));
+      }
+      lines.appendChild(li);
+    });
+
+    var actions = el('div', { className: 'promo-actions' });
+    promo.boutons.forEach(function (b, i) {
+      var a = el('a', { className: 'btn ' + (i === 0 ? 'btn-promo' : 'btn-promo-outline'), href: '#reserver', text: b.libelle });
+      a.addEventListener('click', function (event) {
+        event.preventDefault();
+        openBookingById(b.acuityId);
+      });
+      actions.appendChild(a);
+    });
+
+    var text = el('div', { className: 'promo-text' }, [
+      el('p', { className: 'promo-eyebrow' }, [pumpkinIcon('promo-icon'), document.createTextNode(promo.titre)]),
+      el('h2', { id: 'promo-titre', className: 'section-title' }, [
+        document.createTextNode(promo.accroche + ' '),
+        el('em', { text: promo.accrocheItalique })
+      ]),
+      el('p', { className: 'promo-dates', text: dates.charAt(0).toUpperCase() + dates.slice(1) }),
+      el('p', { className: 'promo-label', text: promo.etiquette }),
+      el('p', { className: 'promo-price', text: promo.prix }),
+      lines,
+      actions
+    ]);
+
+    var children = [text];
+    if (promo.image && promo.image.src) {
+      children.unshift(el('div', { className: 'promo-visual' }, [
+        el('div', { className: 'arch arch-promo' }, [
+          el('img', { src: promo.image.src, alt: promo.image.alt, loading: 'lazy', width: String(promo.image.largeur || 880), height: String(promo.image.hauteur || 1160) })
+        ])
+      ]));
+    }
+
+    var section = el('section', { id: 'promo', className: 'promo', 'aria-labelledby': 'promo-titre' }, [
+      el('div', { className: 'container promo-inner' }, children)
+    ]);
+    target.parentNode.insertBefore(section, target);
+
+    // Barre « Réserver » mobile : prix de la promo, bouton vers le bloc promo
+    var barPrice = document.querySelector('.mobile-bar-price');
+    if (barPrice && promo.barreMobile) {
+      var label = barPrice.querySelector('span');
+      var price = barPrice.querySelector('strong');
+      if (label) label.textContent = promo.barreMobile.libelle;
+      if (price) price.textContent = promo.barreMobile.prix;
+    }
+    var barBtn = document.querySelector('.mobile-bar-btn');
+    if (barBtn) barBtn.setAttribute('href', '#promo');
+
+    // Arrivée depuis un lien « …/#promo » : le bloc n'existait pas encore au chargement
+    if (window.location.hash === '#promo') section.scrollIntoView();
+  }
+
   /* ---------- Démarrage ---------- */
   function start(json) {
     data = json;
@@ -280,6 +403,7 @@
     if (hasAcuity()) renderAcuity(null);
     else renderList();
     renderGallery();
+    renderPromo();
   }
 
   function showError() {
