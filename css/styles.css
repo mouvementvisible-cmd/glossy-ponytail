@@ -233,6 +233,36 @@ h1, h2, h3 { margin: 0; }
   font-size: 12px; color: var(--texte-doux);
 }
 
+/* ---------- À savoir avant de réserver ---------- */
+.know {
+  width: 100%; max-width: 860px;
+  background: var(--blanc); border: 1px solid var(--ligne); border-left: 3px solid var(--dore); border-radius: 14px;
+  padding: 22px 28px 14px;
+}
+.know-title { margin: 0 0 14px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dore-fonce); }
+.know-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.know-list li { display: flex; flex-direction: column; gap: 4px; }
+.know-diamond { color: var(--dore); font-size: 13px; line-height: 1; }
+.know-list strong { display: block; font-size: 15px; font-weight: 600; }
+.know-list span:not(.know-diamond) { display: block; font-size: 14px; line-height: 1.5; color: var(--texte-doux); }
+.know-more { margin-top: 14px; border-top: 1px solid var(--ligne-douce); }
+.know-more summary {
+  display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; list-style: none;
+  font-size: 14px; font-weight: 600; color: var(--nuit);
+}
+.know-more summary::-webkit-details-marker { display: none; }
+.know-more summary::after {
+  content: ''; width: 8px; height: 8px; margin-top: -3px;
+  border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg); transition: transform .25s ease;
+}
+.know-more[open] summary::after { transform: rotate(-135deg); margin-top: 3px; }
+.know-more summary:hover { color: var(--roi); }
+.know-full { padding: 4px 0 12px; display: grid; gap: 10px; }
+.know-full p { margin: 0; font-size: 15px; color: var(--texte-doux); }
+.know-full strong { color: var(--texte); }
+.know-more[open] .know-full { animation: fadeUp .35s ease both; }
+
 /* ---------- Galerie ---------- */
 .gallery { background: var(--nuit); color: var(--ivoire); padding: 96px 0; }
 .gallery .section-title { color: var(--ivoire); }
@@ -285,13 +315,6 @@ h1, h2, h3 { margin: 0; }
 .gallery-btn:disabled { opacity: .35; cursor: default; }
 .gallery-btn:disabled:hover { background: none; }
 
-/* ---------- Avant ton RDV ---------- */
-.before { padding-top: 96px; padding-bottom: 96px; }
-.before-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
-.before-item { border-top: 1px solid var(--dore); padding-top: 18px; display: flex; flex-direction: column; gap: 6px; }
-.before-item h3 { font-size: 17px; font-weight: 600; }
-.before-item p { margin: 0; color: var(--texte-doux); font-size: 16px; }
-
 /* ---------- Noëlla ---------- */
 .about { background: var(--sable); }
 .about-inner { max-width: 760px; padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
@@ -329,12 +352,14 @@ h1, h2, h3 { margin: 0; }
    Tablette et mobile
    ========================================================== */
 @media (max-width: 960px) {
+  .know-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { gap: 48px; padding-top: 48px; padding-bottom: 64px; }
-  .before-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
   :root { --gutter: 20px; }
+  .know { padding: 18px 18px 8px; }
+  .know-list { grid-template-columns: 1fr; gap: 14px; }
   body { font-size: 16px; padding-bottom: var(--mobile-bar-h); }
 
   .menu-toggle { display: inline-flex; }
@@ -375,8 +400,7 @@ h1, h2, h3 { margin: 0; }
   .gallery-filters::-webkit-scrollbar { display: none; }
   .gallery-filter { flex: 0 0 auto; }
 
-  .before { padding-top: 72px; padding-bottom: 72px; }
-  .before-grid { grid-template-columns: 1fr; }
+
   .about-inner { padding-top: 72px; padding-bottom: 72px; }
 
   .mobile-bar {
@@ -392,7 +416,7 @@ h1, h2, h3 { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-text > *, .hero-visual, .gallery-card.is-entering, .booking-card.is-pulsing, #booking-zone.is-loading::after { animation: none; }
+  .hero-text > *, .hero-visual, .know-more[open] .know-full, .gallery-card.is-entering, .booking-card.is-pulsing, #booking-zone.is-loading::after { animation: none; }
   .gallery-card.reveal { opacity: 1; transform: none; transition: none; }
   .gallery-photo img, .gallery-book { transition: none; }
 }
