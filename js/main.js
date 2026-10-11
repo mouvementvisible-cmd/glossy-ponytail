@@ -24,8 +24,9 @@
     return Boolean(data && data.acuity && data.acuity.scheduleUrl);
   }
 
+  // Depuis une photo ou la promo, on arrive sur l'encadré acompte, avec le début du module juste dessous.
   function scrollToBooking() {
-    var target = document.getElementById('reserver');
+    var target = document.getElementById('acompte') || document.querySelector('#reserver .booking-card') || document.getElementById('reserver');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
