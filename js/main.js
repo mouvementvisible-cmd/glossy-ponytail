@@ -291,7 +291,8 @@
     if (!promo) return false;
     if (new URLSearchParams(window.location.search).get('promo') === 'apercu') return true;
     var today = parisToday(promo.fuseau);
-    return today >= promo.debut && today <= promo.fin;
+    // La promo s'affiche dès « affichageDebut » (réservations à l'avance), jusqu'à la fin de « fin » incluse.
+    return today >= (promo.affichageDebut || promo.debut) && today <= promo.fin;
   }
 
   function pumpkinIcon(className) {

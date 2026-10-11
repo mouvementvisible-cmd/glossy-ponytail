@@ -5,11 +5,12 @@
     "fallbackUrl": "https://www.iarabeauty.com/pro/glossypony_"
   },
   "promo": {
-    "_note": "Promotion temporaire : affichée automatiquement du jour « debut » au jour « fin » inclus (heure de Paris). Hors période, rien n'apparaît dans la page. Pour prévisualiser : ajouter ?promo=apercu à l'adresse.",
+    "_note": "Promotion temporaire : affichée automatiquement du jour « affichageDebut » (réservations ouvertes à l'avance ; par défaut « debut ») au jour « fin » inclus (heure de Paris). « debut » et « fin » sont les dates de l'offre, écrites dans les textes. Hors période, rien n'apparaît dans la page. Pour prévisualiser : ajouter ?promo=apercu à l'adresse.",
     "id": "halloween-2026",
     "titre": "Spécial Halloween",
     "accroche": "Des prix à faire",
     "accrocheItalique": "peur.",
+    "affichageDebut": "2026-10-11",
     "debut": "2026-10-20",
     "fin": "2026-11-05",
     "fuseau": "Europe/Paris",
