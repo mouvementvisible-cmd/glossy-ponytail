@@ -6,6 +6,7 @@
   var ACUITY_EMBED_SCRIPT = 'https://embed.acuityscheduling.com/js/embed.js';
   var data = null;
   var prestationsById = {};
+  var categoryByPrestation = {};
 
   /* ---------- Petits utilitaires ---------- */
   function el(tag, attrs, children) {
@@ -26,6 +27,14 @@
   function scrollToBooking() {
     var target = document.getElementById('reserver');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function pulseBooking() {
+    var card = document.querySelector('.booking-card');
+    if (!card) return;
+    card.classList.remove('is-pulsing');
+    void card.offsetWidth;
+    card.classList.add('is-pulsing');
   }
 
   /* ---------- Menu mobile ---------- */
@@ -70,6 +79,11 @@
       className: 'booking-iframe',
       loading: 'lazy'
     });
+    // Voile « chargement » tant que la page Acuity n'est pas affichée (retiré au plus tard après 8 s).
+    zone.classList.add('is-loading');
+    function stopLoading() { zone.classList.remove('is-loading'); }
+    iframe.addEventListener('load', stopLoading);
+    setTimeout(stopLoading, 8000);
     var children = [iframe];
     if (acuityId) {
       // Un lien direct vers une prestation n'affiche pas de retour dans Acuity : on l'ajoute.
@@ -128,6 +142,7 @@
     if (hasAcuity()) {
       renderAcuity(prestation && prestation.acuityId);
       scrollToBooking();
+      setTimeout(pulseBooking, 450);
       return;
     }
     // Pas encore d'Acuity : on fait défiler jusqu'à la ligne de la prestation.
@@ -147,9 +162,26 @@
     var track = document.getElementById('gallery-track');
     if (!track) return;
 
+    var cards = [];
+    var prev = document.querySelector('.gallery-btn[data-dir="-1"]');
+    var next = document.querySelector('.gallery-btn[data-dir="1"]');
+
+    // Apparition douce des photos quand elles entrent à l'écran.
+    var observer = 'IntersectionObserver' in window
+      ? new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 })
+      : null;
+
     data.realisations.forEach(function (item) {
       var prestation = prestationsById[item.prestation];
       var name = prestation ? prestation.nom : item.alt;
+      var label = item.variante ? name + ', ' + item.variante : name;
 
       var photo;
       if (item.image) {
@@ -162,32 +194,87 @@
         ]);
       }
 
-      var book = el('a', { className: 'gallery-book', href: '#reserver', text: 'Réserver ce style →', 'aria-label': 'Réserver ce style : ' + name });
+      var book = el('a', { className: 'gallery-book', href: '#reserver', text: 'Réserver ce style →', 'aria-label': 'Réserver ce style : ' + label });
       book.addEventListener('click', function (event) {
         event.preventDefault();
         openBooking(item.prestation);
       });
 
-      track.appendChild(el('figure', { className: 'gallery-card' }, [
+      var title = [el('span', { className: 'gallery-name', text: name })];
+      if (item.variante) title.push(el('span', { className: 'gallery-variant', text: item.variante }));
+
+      var card = el('figure', { className: 'gallery-card reveal', 'data-category': categoryByPrestation[item.prestation] || '' }, [
         photo,
-        el('figcaption', {}, [el('span', { className: 'gallery-name', text: name }), book])
-      ]));
+        el('figcaption', {}, [el('div', { className: 'gallery-title' }, title), book])
+      ]);
+      track.appendChild(card);
+      cards.push(card);
+      if (observer) observer.observe(card);
+      else card.classList.add('is-visible');
     });
+
+    function updateArrows() {
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    }
+
+    function applyFilter(category) {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = !category || card.getAttribute('data-category') === category;
+        card.hidden = !match;
+        card.classList.remove('is-entering');
+        if (match) {
+          void card.offsetWidth;
+          card.style.setProperty('--enter-delay', Math.min(shown, 8) * 45 + 'ms');
+          card.classList.add('is-visible', 'is-entering');
+          shown++;
+        }
+      });
+      track.scrollLeft = 0;
+      updateArrows();
+      var status = document.getElementById('gallery-status');
+      if (status) status.textContent = shown + (shown > 1 ? ' réalisations affichées' : ' réalisation affichée');
+    }
+
+    var filters = document.getElementById('gallery-filters');
+    if (filters) {
+      ['Tout'].concat(data.categories.map(function (c) { return c.nom; })).forEach(function (label, index) {
+        var btn = el('button', {
+          type: 'button',
+          className: 'gallery-filter' + (index === 0 ? ' is-active' : ''),
+          'aria-pressed': index === 0 ? 'true' : 'false',
+          text: label
+        });
+        btn.addEventListener('click', function () {
+          filters.querySelectorAll('.gallery-filter').forEach(function (other) {
+            var active = other === btn;
+            other.classList.toggle('is-active', active);
+            other.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          applyFilter(index === 0 ? null : label);
+        });
+        filters.appendChild(btn);
+      });
+    }
 
     document.querySelectorAll('.gallery-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var card = track.querySelector('.gallery-card');
+        var card = track.querySelector('.gallery-card:not([hidden])');
         var step = card ? card.getBoundingClientRect().width + 24 : 300;
         track.scrollBy({ left: step * Number(btn.dataset.dir), behavior: 'smooth' });
       });
     });
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
   }
 
   /* ---------- Démarrage ---------- */
   function start(json) {
     data = json;
     data.categories.forEach(function (cat) {
-      cat.prestations.forEach(function (p) { prestationsById[p.id] = p; });
+      cat.prestations.forEach(function (p) { prestationsById[p.id] = p; categoryByPrestation[p.id] = cat.nom; });
     });
 
     if (hasAcuity()) renderAcuity(null);

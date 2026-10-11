@@ -48,8 +48,8 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
       </button>
       <nav id="menu" class="main-nav" aria-label="Navigation principale">
-        <a href="#reserver">Tarifs</a>
         <a href="#galerie">Réalisations</a>
+        <a href="#reserver">Tarifs</a>
         <a href="#avant">Avant ton RDV</a>
         <a href="#infos">Infos</a>
         <a class="btn btn-dark btn-small" href="#reserver">Réserver</a>
@@ -88,6 +88,25 @@
       </div>
     </section>
 
+    <section id="galerie" class="gallery" aria-labelledby="galerie-titre">
+      <div class="container">
+        <div class="gallery-head">
+          <div>
+            <h2 id="galerie-titre" class="section-title">Réalisations</h2>
+            <p class="gallery-sub">Un style te plaît ? Réserve-le directement.</p>
+          </div>
+          <a class="gallery-insta" href="https://www.instagram.com/glossypony_/" rel="noopener">Plus sur Instagram →</a>
+        </div>
+        <div class="gallery-filters" id="gallery-filters" role="group" aria-label="Filtrer les réalisations par catégorie"></div>
+        <p class="sr-only" id="gallery-status" aria-live="polite"></p>
+        <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Réalisations, faire défiler horizontalement"></div>
+        <div class="gallery-nav">
+          <button type="button" class="gallery-btn" data-dir="-1" aria-label="Photos précédentes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="gallery-btn gallery-btn-next" data-dir="1" aria-label="Photos suivantes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </section>
+
     <section id="reserver" class="booking container" aria-labelledby="reserver-titre">
       <div class="section-head center">
         <p class="eyebrow eyebrow-center">Tarifs &amp; réservation</p>
@@ -102,23 +121,6 @@
           <p class="booking-noscript">Active JavaScript pour voir les prestations, ou réserve sur <a href="https://www.iarabeauty.com/pro/glossypony_">ma page de réservation</a>.</p>
         </noscript>
         <div class="booking-footer"><span>Paiement sécurisé de l'acompte</span><span id="booking-provider">Réservation en ligne</span></div>
-      </div>
-    </section>
-
-    <section id="galerie" class="gallery" aria-labelledby="galerie-titre">
-      <div class="container">
-        <div class="gallery-head">
-          <div>
-            <h2 id="galerie-titre" class="section-title">Réalisations</h2>
-            <p class="gallery-sub">Un style te plaît ? Réserve-le directement.</p>
-          </div>
-          <a class="gallery-insta" href="https://www.instagram.com/glossypony_/" rel="noopener">Plus sur Instagram →</a>
-        </div>
-        <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Réalisations, faire défiler horizontalement"></div>
-        <div class="gallery-nav">
-          <button type="button" class="gallery-btn" data-dir="-1" aria-label="Photos précédentes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <button type="button" class="gallery-btn gallery-btn-next" data-dir="1" aria-label="Photos suivantes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-        </div>
       </div>
     </section>
 

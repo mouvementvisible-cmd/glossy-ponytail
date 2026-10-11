@@ -221,11 +221,13 @@
     {
       "image": "images/realisations/weeding-sleek.webp",
       "alt": "Coiffure de mariée : plaquage sleek avec raie au milieu, boucles autour du visage, bijou de tête et voile",
+      "variante": "Mariée",
       "prestation": "weeding-sleek"
     },
     {
       "image": "images/realisations/weeding-sleek-dore.webp",
       "alt": "Coiffure de soirée : plaquage sleek avec ondulation sur le côté, tenue dorée",
+      "variante": "Soirée",
       "prestation": "weeding-sleek"
     },
     {
@@ -241,11 +243,13 @@
     {
       "image": "images/realisations/half-pony.webp",
       "alt": "Half pony vu de dos : haut attaché, longueurs bouclées en grandes ondulations",
+      "variante": "Ondulations",
       "prestation": "half-pony"
     },
     {
       "image": "images/realisations/half-pony-chignon.webp",
       "alt": "Half pony de profil : chignon haut, plaquage net et baby hair, longueurs lisses",
+      "variante": "Chignon",
       "prestation": "half-pony"
     },
     {
@@ -266,21 +270,25 @@
     {
       "image": "images/realisations/ponytail.webp",
       "alt": "Sleek ponytail haute et lisse, plaquage sans gel, longueur jusqu'au bas du dos",
+      "variante": "Queue longue",
       "prestation": "ponytail"
     },
     {
       "image": "images/realisations/bun-ponytail.webp",
       "alt": "Bun ponytail : chignon haut bouclé, plaquage lisse et mèches frange sur le côté",
+      "variante": "Bun",
       "prestation": "ponytail"
     },
     {
       "image": "images/realisations/ponytail-mur-blanc.webp",
       "alt": "Sleek ponytail haute de profil, baby hair dessinés, fond blanc",
+      "variante": "Baby hair",
       "prestation": "ponytail"
     },
     {
       "image": "images/realisations/ponytail-tresses.webp",
       "alt": "Ponytail haute avec tresses plaquées sur le dessus, longueurs lisses",
+      "variante": "Tresses",
       "prestation": "ponytail"
     },
     {
