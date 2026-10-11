@@ -198,11 +198,17 @@
         ]);
       }
 
-      var book = el('a', { className: 'gallery-book', href: '#reserver', text: 'Réserver ce style →', 'aria-label': 'Réserver ce style : ' + label });
-      book.addEventListener('click', function (event) {
-        event.preventDefault();
-        openBooking(item.prestation);
-      });
+      var book;
+      if (prestation && prestation.surDemande) {
+        // Prestation privée dans Acuity (à domicile) : pas de réservation en ligne, on renvoie vers Instagram.
+        book = el('a', { className: 'gallery-book', href: data.instagram || 'https://www.instagram.com/glossypony_/', target: '_blank', rel: 'noopener', text: 'Sur demande · contacte-moi →', 'aria-label': 'Sur demande : contacte-moi sur Instagram pour ' + label + ' (s\'ouvre dans un nouvel onglet)' });
+      } else {
+        book = el('a', { className: 'gallery-book', href: '#reserver', text: 'Réserver ce style →', 'aria-label': 'Réserver ce style : ' + label });
+        book.addEventListener('click', function (event) {
+          event.preventDefault();
+          openBooking(item.prestation);
+        });
+      }
 
       var title = [el('span', { className: 'gallery-name', text: name })];
       if (item.variante) title.push(el('span', { className: 'gallery-variant', text: item.variante }));
@@ -272,6 +278,28 @@
     track.addEventListener('scroll', updateArrows, { passive: true });
     window.addEventListener('resize', updateArrows);
     updateArrows();
+  }
+
+  /* ---------- Acompte par Revolut (lu dans data/prestations.json, bloc « acompte ») ---------- */
+  function renderAcompte() {
+    var a = data && data.acompte;
+    if (!a) return;
+    var montant = a.montant + ' €';
+
+    // Mentions courtes (ligne du hero, pied du module)
+    document.querySelectorAll('[data-acompte="montant"]').forEach(function (node) { node.textContent = montant; });
+
+    // Encadré juste au-dessus du module de réservation
+    var card = document.querySelector('#reserver .booking-card');
+    if (!card) return;
+    var pay = el('a', { className: 'btn btn-outline btn-small acompte-pay', href: a.lien, target: '_blank', rel: 'noopener', text: 'Payer l\'acompte sur Revolut', 'aria-label': 'Payer l\'acompte de ' + montant + ' sur Revolut (s\'ouvre dans un nouvel onglet)' });
+    var box = el('aside', { id: 'acompte', className: 'acompte', 'aria-labelledby': 'acompte-titre' }, [
+      el('h3', { id: 'acompte-titre', className: 'acompte-title', text: 'Acompte de ' + montant + ' pour bloquer ton créneau' }),
+      el('p', { className: 'acompte-text', text: 'Règle-le par Revolut juste après ta réservation (le lien est aussi dans ton e-mail de confirmation). Il est déduit du prix final.' }),
+      el('p', { className: 'acompte-rule', text: 'Sans acompte reçu dans les ' + a.delaiHeures + ' h, ton rendez-vous est annulé.' }),
+      pay
+    ]);
+    card.parentNode.insertBefore(box, card);
   }
 
   /* ---------- Promotion (affichée seulement pendant sa période) ---------- */
@@ -404,6 +432,7 @@
     if (hasAcuity()) renderAcuity(null);
     else renderList();
     renderGallery();
+    renderAcompte();
     renderPromo();
   }
 

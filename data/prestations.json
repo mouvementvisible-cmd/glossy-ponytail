@@ -4,6 +4,12 @@
     "scheduleUrl": "https://glossyponytai93.as.me/",
     "fallbackUrl": "https://www.iarabeauty.com/pro/glossypony_"
   },
+  "acompte": {
+    "_note": "Acompte par Revolut, hors Acuity (décidé le 11/10/2026). Le montant, le lien et le délai sont lus ici par js/main.js : encadré au-dessus du module, ligne du hero et pied du module.",
+    "montant": 20,
+    "lien": "https://revolut.me/isharon",
+    "delaiHeures": 24
+  },
   "promo": {
     "_note": "Promotion temporaire : affichée automatiquement du jour « affichageDebut » (réservations ouvertes à l'avance ; par défaut « debut ») au jour « fin » inclus (heure de Paris). « debut » et « fin » sont les dates de l'offre, écrites dans les textes. Hors période, rien n'apparaît dans la page. Pour prévisualiser : ajouter ?promo=apercu à l'adresse.",
     "id": "halloween-2026",
@@ -76,7 +82,8 @@
           "nom": "Weeding sleek",
           "duree": "5 h",
           "prix": "dès 110 €",
-          "acuityId": null,
+          "acuityId": 99314162,
+          "surDemande": true,
           "comprend": [
             "La prestation de ton choix, customisation le jour même incluse, avec ou sans tissage",
             "Décoloration des nœuds",

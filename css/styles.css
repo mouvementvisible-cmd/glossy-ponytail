@@ -245,12 +245,10 @@ h1, h2, h3 { margin: 0; }
   padding: 22px 28px 26px;
 }
 .know-title { margin: 0 0 14px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dore-fonce); }
-.know-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 28px; }
+.know-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
 .know-list li { display: flex; flex-direction: column; gap: 4px; }
 .know-diamond { color: var(--dore); font-size: 13px; line-height: 1; }
 .know-list strong { display: block; font-size: 15px; font-weight: 600; }
-.know-pay { display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; margin-top: 8px; padding: 8px 18px; border: 1px solid var(--nuit); border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background-color .2s, color .2s; }
-.know-pay:hover { background: var(--nuit); color: var(--ivoire); }
 .know-list span:not(.know-diamond) { display: block; font-size: 14px; line-height: 1.5; color: var(--texte-doux); }
 
 /* ---------- Promotion (affichée par js/main.js pendant sa période) ---------- */
@@ -284,6 +282,17 @@ h1, h2, h3 { margin: 0; }
 .btn-promo:hover { background: var(--citrouille-clair); color: var(--nuit); }
 .btn-promo-outline { background: transparent; color: var(--ivoire); border-color: var(--ivoire); }
 .btn-promo-outline:hover { background: var(--ivoire); color: var(--nuit); }
+
+/* ---------- Encadré « Acompte » (au-dessus du module) ---------- */
+.acompte {
+  width: 100%; max-width: 860px;
+  background: var(--sable); border: 1px solid var(--sable-fonce); border-left: 3px solid var(--dore); border-radius: 14px;
+  padding: 24px 28px;
+}
+.acompte-title { margin: 0 0 8px; font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--nuit); }
+.acompte-text { margin: 0; font-size: 16px; color: var(--texte-doux); }
+.acompte-rule { margin: 10px 0 0; font-size: 16px; font-weight: 600; color: var(--nuit); }
+.acompte-pay { margin-top: 18px; }
 
 /* ---------- Galerie ---------- */
 .gallery { background: var(--nuit); color: var(--ivoire); padding: 96px 0; }
@@ -396,6 +405,9 @@ h1, h2, h3 { margin: 0; }
   .stepper li + li::before { width: 12px; margin-right: 5px; }
   .stepper-num { width: 24px; height: 24px; font-size: 15px; }
   .know { padding: 18px 18px 22px; }
+  .acompte { padding: 20px 18px; }
+  .acompte-title { font-size: 26px; }
+  .acompte-pay { width: 100%; }
   .know-list { grid-template-columns: 1fr; gap: 14px; }
   body { font-size: 16px; padding-bottom: var(--mobile-bar-h); }
 
