@@ -38,7 +38,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 - Acompte demandé à la réservation
 - Retards : 5 min offerts, +10 € à 15 min, +15 € à 20 min ; au-delà de 20 min, RDV annulé. Sans nouvelles dès 5 min de retard, RDV annulé.
 - Accompagnant non accepté, hommes non acceptés, accès handicapé (conditions de la page iara, relevées le 11/10/2026 ; corrigé à la demande du client, le brief disait l'inverse)
-- Annulation ou report possible jusqu'à 72 h avant le rendez-vous ; préavis minimum de réservation : 10 h ; réservation possible jusqu'à 40 jours à l'avance (réglé ainsi dans Acuity ; écrit dans le « Tout lire » du bandeau « À savoir »)
+- Annulation ou report possible jusqu'à 72 h avant le rendez-vous ; préavis minimum de réservation : 10 h ; réservation possible jusqu'à 40 jours à l'avance (réglé ainsi dans Acuity ; écrit dans le bandeau « À savoir »)
 - Cartes cadeaux disponibles (via iara)
 
 ## Avis
@@ -62,7 +62,7 @@ Les tarifs bougent : les centraliser dans un seul fichier de données (ex. `data
 2. (supprimée le 11/10/2026) La section « Réserver, c'est trois étapes » est remplacée par une ligne compacte « 1 Prestation · 2 Créneau · 3 Acompte » au-dessus du bandeau « À savoir » dans la section réservation
 3. Réalisations (placées AVANT la réservation depuis le 11/10/2026) : 6 à 10 photos ; rangée à faire glisser sur mobile (scroll-snap, sans défilement auto, photo suivante visible), défilement avec flèches sur ordinateur. Sous chaque photo : nom de la prestation + lien « Réserver ce style » qui recharge le module Acuity sur cette prestation (paramètre `appointmentType`, ID stocké dans `data/prestations.json`) puis fait défiler jusqu'au module. Filtres par catégorie (Tout, Ponytails, Ponylace & wigs, Tissages & braids), nom de variante facultatif sous le nom de la prestation (champ `variante` des `realisations`, ex. « Ponytail · Bun »), animations légères (apparition au défilement, zoom au survol, voile de chargement de la réservation, désactivées si « mouvement réduit »). Pas de carrousel en haut de page : une seule photo forte.
 4. Tarifs & réservation = le module Acuity (liste des prestations par catégorie, avec prix)
-5. (supprimée le 11/10/2026) La section « Avant ton rendez-vous » est remplacée par un bandeau « À savoir avant de réserver » placé au-dessus du module Acuity (4 points : acompte, retards, perruque ou lace, adresse) avec un « Tout lire » qui déplie le détail complet ; lien du menu : `#savoir`
+5. (supprimée le 11/10/2026) La section « Avant ton rendez-vous » est remplacée par un bandeau « À savoir avant de réserver » placé au-dessus du module Acuity (5 points, chacun écrit une seule fois : acompte, annulation et report, retards, perruque ou lace, adresse ; plus de « Tout lire ») ; lien du menu : `#savoir`
 6. À propos de Noëlla (titre : « Noëlla, coiffeuse autodidacte depuis 5 ans. », ton sobre), sans avis ni note
 7. Pied de page : infos pratiques, réseaux, mentions légales, cartes cadeaux
 
