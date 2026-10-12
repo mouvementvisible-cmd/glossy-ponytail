@@ -29,7 +29,6 @@
   --container: 1200px;
   --gutter: 24px;
   --radius: 18px;
-  --mobile-bar-h: 64px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -393,9 +392,6 @@ h1, h2, h3 { margin: 0; }
 .footer-links a { color: var(--texte-sur-nuit); }
 .footer-links a:hover { color: var(--ivoire); }
 
-/* ---------- Barre « Réserver » mobile ---------- */
-.mobile-bar { display: none; }
-
 /* ---------- Pages légales ---------- */
 .legal { max-width: 760px; padding-top: 64px; padding-bottom: 96px; }
 .legal h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5vw, 52px); line-height: 1.05; margin-bottom: 32px; }
@@ -437,7 +433,7 @@ h1, h2, h3 { margin: 0; }
   .ondemand-title { font-size: 30px; }
   .ondemand-btn { width: 100%; box-sizing: border-box; }
   .know-list { grid-template-columns: 1fr; gap: 14px; }
-  body { font-size: 16px; padding-bottom: var(--mobile-bar-h); }
+  body { font-size: 16px; }
 
   .menu-toggle { display: inline-flex; }
   .main-nav {
@@ -478,21 +474,10 @@ h1, h2, h3 { margin: 0; }
 
   .about-inner { padding-top: 72px; padding-bottom: 72px; }
 
-  .mobile-bar {
-    display: flex; align-items: center; gap: 14px;
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
-    padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom));
-    background: var(--ivoire); border-top: 1px solid var(--ligne);
-    box-shadow: 0 -12px 30px -18px rgba(15, 30, 74, 0.35);
-    transition: transform .3s ease;
-  }
-  .mobile-bar.is-hidden { transform: translateY(110%); pointer-events: none; }
-  .mobile-bar-btn { flex: 1; min-height: 46px; padding: 10px 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-text > *, .hero-visual, .gallery-card.is-entering, .booking-card.is-pulsing, .manage-arrow, #booking-zone.is-loading::after { animation: none; }
   .gallery-card.reveal { opacity: 1; transform: none; transition: none; }
-  .mobile-bar { transition: none; }
   .gallery-photo img, .gallery-book { transition: none; }
 }
