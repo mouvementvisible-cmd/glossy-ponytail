@@ -53,6 +53,7 @@ a:hover { color: var(--roi); }
 :focus-visible { outline: 2px solid var(--roi); outline-offset: 3px; }
 
 section[id], .know, .booking-card { scroll-margin-top: 92px; }
+.booking .section-head { scroll-margin-top: 100px; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .container { max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }

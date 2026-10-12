@@ -24,9 +24,9 @@
     return Boolean(data && data.acuity && data.acuity.scheduleUrl);
   }
 
-  // Depuis une photo ou la promo, on arrive directement sur le module.
+  // Depuis une photo ou la promo, on arrive sur l'en-tête de la réservation : titre, étapes, puis le module juste dessous.
   function scrollToBooking() {
-    var target = document.querySelector('#reserver .booking-card') || document.getElementById('reserver');
+    var target = document.querySelector('#reserver .section-head') || document.getElementById('reserver');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
