@@ -180,6 +180,7 @@ h1, h2, h3 { margin: 0; }
 }
 .stepper-btn:hover { background: var(--nuit); color: var(--ivoire); }
 .stepper-btn:hover .stepper-num { background: var(--ivoire); }
+.stepper-know { margin-top: -18px; gap: 8px; }
 .stepper-btn:focus-visible { outline: 2px solid var(--roi); outline-offset: 3px; }
 .stepper-chevron { font-size: 12px; transition: transform .2s; }
 .stepper-btn[aria-expanded="true"] .stepper-chevron { transform: rotate(180deg); }
