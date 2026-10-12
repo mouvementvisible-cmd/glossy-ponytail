@@ -459,19 +459,27 @@
     ]);
     target.parentNode.insertBefore(section, target);
 
-    // Barre « Réserver » mobile : prix de la promo, bouton vers le bloc promo
-    var barPrice = document.querySelector('.mobile-bar-price');
-    if (barPrice && promo.barreMobile) {
-      var label = barPrice.querySelector('span');
-      var price = barPrice.querySelector('strong');
-      if (label) label.textContent = promo.barreMobile.libelle;
-      if (price) price.textContent = promo.barreMobile.prix;
-    }
+    // Barre « Réserver » mobile : pendant la promo, le bouton mène au bloc promo
     var barBtn = document.querySelector('.mobile-bar-btn');
     if (barBtn) barBtn.setAttribute('href', '#promo');
 
     // Arrivée depuis un lien « …/#promo » : le bloc n'existait pas encore au chargement
     if (window.location.hash === '#promo') section.scrollIntoView();
+  }
+
+  /* ---------- Barre « Réserver » mobile : masquée quand la réservation (ou la promo) est à l'écran ---------- */
+  function initMobileBar() {
+    var bar = document.querySelector('.mobile-bar');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var onScreen = {};
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { onScreen[entry.target.id] = entry.isIntersecting && entry.intersectionRatio > 0; });
+      bar.classList.toggle('is-hidden', Object.keys(onScreen).some(function (id) { return onScreen[id]; }));
+    });
+    ['reserver', 'promo'].forEach(function (id) {
+      var target = document.getElementById(id);
+      if (target) observer.observe(target);
+    });
   }
 
   /* ---------- Démarrage ---------- */
@@ -487,6 +495,7 @@
     renderAcompte();
     renderSurDemande();
     renderPromo();
+    initMobileBar();
   }
 
   function showError() {
