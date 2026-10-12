@@ -24,9 +24,9 @@
     return Boolean(data && data.acuity && data.acuity.scheduleUrl);
   }
 
-  // Depuis une photo ou la promo, on arrive sur l'encadré acompte, avec le début du module juste dessous.
+  // Depuis une photo ou la promo, on arrive directement sur le module.
   function scrollToBooking() {
-    var target = document.getElementById('acompte') || document.querySelector('#reserver .booking-card') || document.getElementById('reserver');
+    var target = document.querySelector('#reserver .booking-card') || document.getElementById('reserver');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -296,17 +296,31 @@
     // Mentions courtes (ligne du hero, pied du module)
     document.querySelectorAll('[data-acompte="montant"]').forEach(function (node) { node.textContent = montant; });
 
-    // Encadré juste au-dessus du module de réservation
+    // Étape « Acompte » de la ligne d'étapes : bouton qui déplie les précisions (montant, Revolut, délai)
     var card = document.querySelector('#reserver .booking-card');
-    if (!card) return;
+    var step = document.querySelector('#reserver .stepper li:last-child');
+    if (!card || !step) return;
     var pay = el('a', { className: 'btn btn-outline btn-small acompte-pay', href: a.lien, target: '_blank', rel: 'noopener', text: 'Payer l\'acompte sur Revolut', 'aria-label': 'Payer l\'acompte de ' + montant + ' sur Revolut (s\'ouvre dans un nouvel onglet)' });
-    var box = el('aside', { id: 'acompte', className: 'acompte', 'aria-labelledby': 'acompte-titre' }, [
-      el('h3', { id: 'acompte-titre', className: 'acompte-title', text: 'Acompte de ' + montant + ' pour bloquer ton créneau' }),
-      el('p', { className: 'acompte-text', text: 'Règle-le par Revolut juste après ta réservation (le lien est aussi dans ton e-mail de confirmation). Il est déduit du prix final.' }),
+    var box = el('div', { id: 'acompte', className: 'acompte', role: 'region', 'aria-labelledby': 'acompte-btn', hidden: true }, [
+      el('p', { className: 'acompte-title', text: 'Acompte de ' + montant + ' par Revolut' }),
+      el('p', { className: 'acompte-text', text: 'Règle-le juste après ta réservation (le lien est aussi dans ton e-mail de confirmation). Il est déduit du prix final.' }),
       el('p', { className: 'acompte-rule', text: 'Sans acompte reçu dans les ' + a.delaiHeures + ' h, ton rendez-vous est annulé.' }),
       pay
     ]);
-    card.parentNode.insertBefore(box, card);
+    var num = step.querySelector('.stepper-num');
+    var button = el('button', { id: 'acompte-btn', type: 'button', className: 'stepper-btn', 'aria-expanded': 'false', 'aria-controls': 'acompte' }, [
+      num,
+      el('span', { text: 'Acompte' }),
+      el('span', { className: 'stepper-chevron', 'aria-hidden': 'true', text: '▾' })
+    ]);
+    button.addEventListener('click', function () {
+      var open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', open ? 'false' : 'true');
+      box.hidden = open;
+    });
+    step.replaceChildren(button);
+    var stepper = step.parentNode;
+    stepper.parentNode.insertBefore(box, stepper.nextSibling);
   }
 
   /* ---------- Prestations sur demande (carte sous le module) ---------- */
